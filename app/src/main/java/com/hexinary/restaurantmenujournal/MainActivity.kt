@@ -11,21 +11,36 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.hexinary.restaurantmenujournal.model.MenuItemAdapter
+import com.hexinary.restaurantmenujournal.views.MainScreenView
+import java.util.ArrayList
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
+    private lateinit var mainScreenView: MainScreenView
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var viewAdapter: RecyclerView.Adapter<*>
+    private lateinit var viewManager: RecyclerView.LayoutManager
+    private lateinit var recyclerViewLayout: ConstraintLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initializeRecyclerView()
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
+        fab.setOnClickListener()
+        {
+                view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val toggle = ActionBarDrawerToggle(
@@ -87,5 +102,31 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    fun initializeRecyclerView(){
+        val arrayList = ArrayList<String>()
+        arrayList.add("test1")
+        arrayList.add("test2")
+        arrayList.add("test3")
+        recyclerViewLayout = findViewById<ConstraintLayout>(R.id.layout_recyclerViewHolder)
+        viewManager = LinearLayoutManager(this)
+        viewAdapter = MenuItemAdapter(arrayList,this)
+        recyclerView = recyclerViewLayout.findViewById<RecyclerView>(R.id.layout_recyclerView).apply {
+
+            setHasFixedSize(true)
+            // use a linear layout manager
+            layoutManager = viewManager
+            // specify an viewAdapter (see also next example)
+            adapter = viewAdapter
+
+/*            //Restore data
+            if(restoreInstanceData != null) {
+                layoutManager?.onRestoreInstanceState(restoreInstanceData)
+            }*/
+        }
+        val decoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+        recyclerView.addItemDecoration(decoration)
+
     }
 }
