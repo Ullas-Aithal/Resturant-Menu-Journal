@@ -1,5 +1,6 @@
 package com.hexinary.restaurantmenujournal
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -15,6 +16,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.hexinary.restaurantmenujournal.activities.AddItem
 import com.hexinary.restaurantmenujournal.model.MenuItemAdapter
 import com.hexinary.restaurantmenujournal.views.MainScreenView
 import java.util.ArrayList
@@ -36,9 +38,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener()
         {
-                view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+                intent = Intent(this, AddItem::class.java)
+                startActivity(intent)
         }
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)

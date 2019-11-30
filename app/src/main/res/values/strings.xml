@@ -13,4 +13,11 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+    <string name="restaurant_name">Restaurant Name</string>
+    <string name="item_name">Item Name</string>
+    <string name="item_good_things">What did you like?</string>
+    <string name="item_bad_things">What didn\'t you like?</string>
+    <string name="item_rating">Your rating:</string>
+
 </resources>
