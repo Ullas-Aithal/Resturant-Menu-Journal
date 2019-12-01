@@ -20,6 +20,12 @@ import com.hexinary.restaurantmenujournal.activities.AddItem
 import com.hexinary.restaurantmenujournal.model.MenuItemAdapter
 import com.hexinary.restaurantmenujournal.views.MainScreenView
 import java.util.ArrayList
+import android.database.sqlite.SQLiteDatabase
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var mainScreenView: MainScreenView
@@ -38,8 +44,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener()
         {
-                intent = Intent(this, AddItem::class.java)
-                startActivity(intent)
+                //intent = Intent(this, AddItem::class.java)
+                //startActivity(intent)
+                val database = ItemSQLiteHelper(this).writableDatabase
         }
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
