@@ -1,5 +1,6 @@
 package com.hexinary.restaurantmenujournal
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -24,7 +25,17 @@ import android.database.sqlite.SQLiteDatabase
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.widget.Toast
+import com.hexinary.restaurantmenujournal.model.ItemDatabaseManager
 import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper
+import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper.DB_Constants.BAD_COMMENTS
+import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper.DB_Constants.GOOD_COMMENTS
+import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper.DB_Constants.ITEM_ID
+import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper.DB_Constants.ITEM_NAME
+import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper.DB_Constants.RATING
+import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper.DB_Constants.RESTAURANT_NAME
+import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper.DB_Constants.TABLE_NAME
+import java.sql.Time
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -33,10 +44,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var recyclerViewLayout: ConstraintLayout
+    private lateinit var databaseManager: ItemDatabaseManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        databaseManager = ItemDatabaseManager(this)
         initializeRecyclerView()
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -44,10 +57,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener()
         {
-                //intent = Intent(this, AddItem::class.java)
-                //startActivity(intent)
-                val database = ItemSQLiteHelper(this).writableDatabase
+            intent = Intent(this, AddItem::class.java)
+            startActivity(intent)
         }
+
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -113,13 +126,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     fun initializeRecyclerView(){
-        val arrayList = ArrayList<String>()
-        arrayList.add("test1")
-        arrayList.add("test2")
-        arrayList.add("test3")
-        recyclerViewLayout = findViewById<ConstraintLayout>(R.id.layout_recyclerViewHolder)
+        recyclerViewLayout = findViewById(R.id.layout_recyclerViewHolder)
         viewManager = LinearLayoutManager(this)
-        viewAdapter = MenuItemAdapter(arrayList,this)
+        viewAdapter = MenuItemAdapter(databaseManager.getItems(),this)
         recyclerView = recyclerViewLayout.findViewById<RecyclerView>(R.id.layout_recyclerView).apply {
 
             setHasFixedSize(true)

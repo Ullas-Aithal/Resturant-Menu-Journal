@@ -1,37 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent"
-android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <LinearLayout android:layout_width="match_parent" android:layout_height="fill_parent"
                   android:orientation="vertical" android:layout_weight="1">
-        <EditText android:layout_width="match_parent" android:layout_height="50dp"
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/restaurant_name"/>
+        <TextView android:layout_width="match_parent" android:layout_height="50dp"
                   android:padding="15dp"
-                  android:id="@+id/editText_restaurantName"
-                  android:inputType="text"
-                  android:hint="@string/restaurant_name"/>
-        <EditText android:layout_width="match_parent" android:layout_height="50dp"
+                  android:id="@+id/textView_restaurantName"/>
+        <TextView android:layout_width="match_parent" android:layout_height="50dp"
                   android:padding="15dp"
-                  android:id="@+id/editText_itemName"
-                  android:inputType="text"
-                  android:hint="@string/item_name"/>
-        <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:id="@+id/textView_itemName"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                   android:padding="15dp"
-                  android:minLines="2"
-                  android:maxLines="5"
                   android:singleLine="false"
-                  android:id="@+id/editText_goodThings"
-                  android:inputType="textMultiLine"
-                  android:hint="@string/item_good_things" android:gravity="top"/>
-        <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:id="@+id/textView_goodThings" android:gravity="top"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                   android:padding="15dp"
-                  android:minLines="2"
-                  android:maxLines="5"
                   android:singleLine="false"
-                  android:id="@+id/editText_badThings"
-                  android:inputType="textMultiLine"
-                  android:hint="@string/item_bad_things" android:gravity="top"/>
+                  android:id="@+id/textView_badThings" android:gravity="top"/>
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="15dp">
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:text="@string/item_rating"
@@ -48,7 +38,7 @@ android:orientation="vertical">
 
     </LinearLayout>
     <Button android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="Save" android:id="@+id/button_saveItem"
+            android:text="Edit" android:id="@+id/button_editItem"
             style="@style/Widget.AppCompat.Button.Borderless.Colored" android:textSize="18sp"
             android:gravity="bottom|center_horizontal" android:layout_gravity="bottom" android:layout_weight="0"/>
 

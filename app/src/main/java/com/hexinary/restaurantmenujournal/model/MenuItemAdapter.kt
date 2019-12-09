@@ -4,11 +4,12 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.hexinary.restaurantmenujournal.R
 
-class MenuItemAdapter(val dataSet: ArrayList<String>, val context: Context):RecyclerView.Adapter<MenuItemAdapter.CustomViewHolder>() {
+class MenuItemAdapter(val dataSet: ArrayList<Item>, val context: Context):RecyclerView.Adapter<MenuItemAdapter.CustomViewHolder>() {
     private val mContext = context
 
     class CustomViewHolder(val layoutUrlView: LinearLayout) : RecyclerView.ViewHolder(layoutUrlView)
@@ -24,8 +25,8 @@ class MenuItemAdapter(val dataSet: ArrayList<String>, val context: Context):Recy
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        val textView = holder.layoutUrlView.findViewById<TextView>(R.id.item_name)
-        textView.text = dataSet[position]
-
+        holder.layoutUrlView.findViewById<TextView>(R.id.item_name).text = dataSet[position].itemName
+        holder.layoutUrlView.findViewById<TextView>(R.id.restaurant_name).text = dataSet[position].restatrantName
+        holder.layoutUrlView.findViewById<RatingBar>(R.id.rating).rating = dataSet[position].rating
     }
 }
