@@ -29,7 +29,7 @@ card_view:cardCornerRadius="4dp">
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content" android:textSize="14sp"/>
                         <RatingBar
-                                android:id="@+id/rating"
+                                android:id="@+id/ratingBar_rating"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:saveEnabled="false"

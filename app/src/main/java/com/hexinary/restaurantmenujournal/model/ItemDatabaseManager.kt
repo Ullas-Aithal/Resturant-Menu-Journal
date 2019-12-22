@@ -3,7 +3,6 @@ package com.hexinary.restaurantmenujournal.model
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
-import android.widget.Toast
 import androidx.core.database.getStringOrNull
 import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper.DB_Constants
 
@@ -18,7 +17,7 @@ class ItemDatabaseManager(val mContext: Context) {
         val values = ContentValues().apply{
             put(DB_Constants.ITEM_ID, item.itemId)
             put(DB_Constants.ITEM_NAME, item.itemName)
-            put(DB_Constants.RESTAURANT_NAME, item.restatrantName)
+            put(DB_Constants.RESTAURANT_NAME, item.restaurantName)
             put(DB_Constants.GOOD_COMMENTS, item.goodComments)
             put(DB_Constants.BAD_COMMENTS, item.badComments)
             put(DB_Constants.RATING, item.rating)

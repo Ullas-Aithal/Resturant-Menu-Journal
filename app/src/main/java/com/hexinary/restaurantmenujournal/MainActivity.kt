@@ -26,6 +26,8 @@ import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.widget.Toast
+import com.hexinary.restaurantmenujournal.activities.ShowItem
+import com.hexinary.restaurantmenujournal.model.Item
 import com.hexinary.restaurantmenujournal.model.ItemDatabaseManager
 import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper
 import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper.DB_Constants.BAD_COMMENTS
@@ -145,5 +147,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val decoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         recyclerView.addItemDecoration(decoration)
 
+    }
+
+    fun showItem(item: Item){
+        startActivity(ShowItem.createLaunchIntent( this,item))
     }
 }

@@ -22,7 +22,7 @@ class AddItem : AppCompatActivity() {
                 findViewById<EditText>(R.id.editText_restaurantName).text.toString(),
                 findViewById<EditText>(R.id.editText_goodThings).text.toString(),
                 findViewById<EditText>(R.id.editText_badThings).text.toString(),
-                findViewById<RatingBar>(R.id.rating).rating
+                findViewById<RatingBar>(R.id.ratingBar_rating).rating
             ))
         }
     }
