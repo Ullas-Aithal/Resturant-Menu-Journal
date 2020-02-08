@@ -1,43 +1,26 @@
 package com.hexinary.restaurantmenujournal
 
-import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import androidx.core.view.GravityCompat
-import androidx.appcompat.app.ActionBarDrawerToggle
+import android.view.Menu
 import android.view.MenuItem
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import android.view.Menu
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
 import com.hexinary.restaurantmenujournal.activities.AddItem
-import com.hexinary.restaurantmenujournal.model.MenuItemAdapter
-import com.hexinary.restaurantmenujournal.views.MainScreenView
-import java.util.ArrayList
-import android.database.sqlite.SQLiteDatabase
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import android.widget.Toast
 import com.hexinary.restaurantmenujournal.activities.ShowItem
 import com.hexinary.restaurantmenujournal.model.Item
 import com.hexinary.restaurantmenujournal.model.ItemDatabaseManager
-import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper
-import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper.DB_Constants.BAD_COMMENTS
-import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper.DB_Constants.GOOD_COMMENTS
-import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper.DB_Constants.ITEM_ID
-import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper.DB_Constants.ITEM_NAME
-import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper.DB_Constants.RATING
-import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper.DB_Constants.RESTAURANT_NAME
-import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper.DB_Constants.TABLE_NAME
-import java.sql.Time
+import com.hexinary.restaurantmenujournal.model.MenuItemAdapter
+import com.hexinary.restaurantmenujournal.views.MainScreenView
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {

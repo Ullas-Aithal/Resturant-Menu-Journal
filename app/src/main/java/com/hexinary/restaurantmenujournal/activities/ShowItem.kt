@@ -3,6 +3,7 @@ package com.hexinary.restaurantmenujournal.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,7 @@ import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper.DB_Constants
 
 class ShowItem: AppCompatActivity() {
     var item: Item? = null
+
     companion object{
         fun createLaunchIntent(context:Context, item: Item): Intent{
                val intent = Intent(context,ShowItem::class.java)
@@ -48,6 +50,9 @@ class ShowItem: AppCompatActivity() {
                 findViewById<TextView>(R.id.textView_badThings).text = badComments
                 findViewById<RatingBar>(R.id.ratingBar_rating).rating = rating
             }
+        }
+        (findViewById<Button>(R.id.button_editItem) as Button).setOnClickListener {
+            startActivity(AddItem.createLaunchIntent(this, item!!))
         }
 
     }

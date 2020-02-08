@@ -7,10 +7,10 @@ import androidx.core.database.getStringOrNull
 import com.hexinary.restaurantmenujournal.model.ItemSQLiteHelper.DB_Constants
 
 class ItemDatabaseManager(val mContext: Context) {
-    fun getReadableDatabase(): SQLiteDatabase{
+    private fun getReadableDatabase(): SQLiteDatabase{
         return ItemSQLiteHelper(mContext).readableDatabase
     }
-    fun getWriteableDatabase():SQLiteDatabase{
+    private fun getWriteableDatabase():SQLiteDatabase{
         return ItemSQLiteHelper(mContext).writableDatabase
     }
     fun addItem(item: Item){
@@ -26,7 +26,7 @@ class ItemDatabaseManager(val mContext: Context) {
     }
     fun getItems():ArrayList<Item>{
         val itemList:ArrayList<Item> = arrayListOf()
-        val db = ItemSQLiteHelper(mContext).readableDatabase
+        val db = getReadableDatabase()
         val projection = arrayOf(DB_Constants.ITEM_ID,
             DB_Constants.ITEM_NAME,
             DB_Constants.RESTAURANT_NAME,
