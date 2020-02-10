@@ -24,6 +24,17 @@ class ItemDatabaseManager(val mContext: Context) {
         }
         getWriteableDatabase().insert(DB_Constants.TABLE_NAME,null,values)
     }
+    fun updateItem(item: Item){
+        val values = ContentValues().apply{
+            put(DB_Constants.ITEM_ID, item.itemId)
+            put(DB_Constants.ITEM_NAME, item.itemName)
+            put(DB_Constants.RESTAURANT_NAME, item.restaurantName)
+            put(DB_Constants.GOOD_COMMENTS, item.goodComments)
+            put(DB_Constants.BAD_COMMENTS, item.badComments)
+            put(DB_Constants.RATING, item.rating)
+        }
+        getWriteableDatabase().update(DB_Constants.TABLE_NAME,values,DB_Constants.ITEM_ID + "=" + item.itemId,null)
+    }
     fun getItems():ArrayList<Item>{
         val itemList:ArrayList<Item> = arrayListOf()
         val db = getReadableDatabase()

@@ -60,14 +60,21 @@ class AddItem : AppCompatActivity() {
 
         (findViewById<Button>(R.id.button_saveItem)).setOnClickListener {
             val databaseManager = ItemDatabaseManager(this)
-            databaseManager.addItem(Item(
-                if(currentItem != null) currentItem!!.itemId else System.currentTimeMillis(),
+            val itemId = if(currentItem != null) currentItem!!.itemId else System.currentTimeMillis()
+            val item = Item(
+                itemId,
                 findViewById<EditText>(R.id.editText_itemName).text.toString(),
                 findViewById<EditText>(R.id.editText_restaurantName).text.toString(),
                 findViewById<EditText>(R.id.editText_goodThings).text.toString(),
                 findViewById<EditText>(R.id.editText_badThings).text.toString(),
                 findViewById<RatingBar>(R.id.ratingBar_rating).rating
-            ))
+            )
+            if(currentItem == null){
+                databaseManager.addItem(item)
+            } else {
+                
+            }
+            databaseManager.updateItem(item)
             finish()
         }
     }
